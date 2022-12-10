@@ -5,11 +5,8 @@ import io.javalin.Javalin;
 public class App {
 
     private static int getPort() {
-        String port = System.getenv("PORT");
-        if (port != null) {
-            return Integer.parseInt(port);
-        }
-        return 5000;
+        String port = System.getenv().getOrDefault("PORT", "5000");
+        return Integer.parseInt(port);
     }
 
     public static Javalin getApp() {
