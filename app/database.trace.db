@@ -1,0 +1,9 @@
+2022-12-17 20:29:36 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]2, 'google.com', '2022-02-03 12-00-00')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+(2, 'google.com', '2022-02-03 12-00-00') [42001-210]
+2022-12-17 20:37:02 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'google.com', '2022-02-21 12:00:40')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('google.com', '2022-02-21 12:00:40') [42001-210]
+2022-12-17 20:40:46 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'google.com', '2022-02-21 12:00:40')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('google.com', '2022-02-21 12:00:40') [42001-210]

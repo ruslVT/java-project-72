@@ -10,10 +10,13 @@ install:
 	./gradlew clean install
 
 run-dist:
-	./build/install/java-package/bin/java-package
+	APP_ENV=production ./build/install/app/bin/app
 
 run:
-	./gradlew run
+	APP_ENV=development ./gradlew run
+
+generate-migrations:
+	./gradlew generateMigrations
 
 test:
 	./gradlew test
@@ -23,7 +26,6 @@ report:
 
 lint:
 	./gradlew checkstyleMain checkstyleTest
-
 
 build-run: build run
 

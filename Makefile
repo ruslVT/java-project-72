@@ -14,6 +14,9 @@ run-dist:
 
 run:
 	make -C app run
+	
+generate-migrations:
+	make -C app generate-migrations
 
 test:
 	make -C app test
