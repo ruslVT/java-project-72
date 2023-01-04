@@ -1,6 +1,7 @@
 package hexlet.code;
 
 import hexlet.code.controllers.RootController;
+import hexlet.code.controllers.UrlController;
 import io.javalin.Javalin;
 import io.javalin.plugin.rendering.template.JavalinThymeleaf;
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
@@ -8,6 +9,11 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+
+import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.post;
+import static io.javalin.apibuilder.ApiBuilder.get;
+
 
 public class App {
 
@@ -19,6 +25,19 @@ public class App {
 
     private static String getAppEnv() {
         return System.getenv().getOrDefault("APP_ENV", "development");
+    }
+
+    private static void addRoutes(Javalin app) {
+        app.get("/", RootController.index);
+        app.routes(() -> {
+            path("/urls", () -> {
+                get(UrlController.listUrls);
+                post(UrlController.addUrl);
+                path("{id}", () -> {
+                    get(UrlController.showUrl);
+                });
+            });
+        });
     }
 
     private static ClassLoaderTemplateResolver getTemplateResolver() {
@@ -43,14 +62,13 @@ public class App {
         Javalin app = Javalin.create(config -> {
             if (getAppEnv().equals("development")) {
                 config.enableDevLogging();
-            } else {
-                config.enableWebjars();
             }
+
+            config.enableWebjars();
             JavalinThymeleaf.configure(getTemplateEngine());
         });
 
-        app.get("/", RootController.index);
-
+        addRoutes(app);
         return app;
     }
 
