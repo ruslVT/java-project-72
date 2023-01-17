@@ -7,7 +7,7 @@ build:
 	./gradlew clean build
 
 install:
-	./gradlew clean install
+	./gradlew install
 
 start-dist:
 	APP_ENV=production ./build/install/app/bin/app

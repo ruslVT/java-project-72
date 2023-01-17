@@ -6,4 +6,4 @@ COPY /app .
 
 RUN gradle installDist
 
-CMD ./build/install/app/bin/app
+CMD APP_ENV=production ./build/install/app/bin/app
