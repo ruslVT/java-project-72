@@ -7,12 +7,12 @@
       <h1>Сайты</h1>
     <table class="table table-bordered table-striped mt-5">
       <thead>
-      <tr>
-        <th class="col-1">ID</th>
-        <th>Имя</th>
-        <th class="col-2">Последняя проверка</th>
-        <th class="col-1">Код ответа</th>
-      </tr>
+        <tr>
+          <th class="col-1">ID</th>
+          <th>Имя</th>
+          <th class="col-2">Последняя проверка</th>
+          <th class="col-1">Код ответа</th>
+        </tr>
       </thead>
       <tbody>
       <tr th:each="url : ${urls}" th:object="${url}">
@@ -20,8 +20,12 @@
         <td>
           <a th:href="@{/urls/{id}(id=*{getId()})}" th:text="${#strings.abbreviate(url.getName(), 50)}"></a>
         </td>
-        <td></td>
-        <td></td>
+        <td th:text="${!url.getUrlChecks().isEmpty}
+          ? ${#temporals.format(url.getUrlChecks().get(url.getUrlChecks().size() - 1).getCreatedAt(), 'dd/MM/yyyy HH:mm')}
+          : ''"></td>
+        <td th:text="${!url.getUrlChecks().isEmpty}
+          ? ${url.getUrlChecks().get(url.getUrlChecks().size() - 1).getStatusCode()}
+          : ''"></td>
       </tr>
       </tbody>
     </table>

@@ -9,10 +9,10 @@ build:
 install:
 	./gradlew clean install
 
-run-dist:
+start-dist:
 	APP_ENV=production ./build/install/app/bin/app
 
-run:
+start:
 	APP_ENV=development ./gradlew run
 
 generate-migrations:

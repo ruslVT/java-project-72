@@ -33,6 +33,9 @@ dependencies {
     implementation 'com.h2database:h2:2.1.210'
     implementation 'org.postgresql:postgresql:42.3.3'
 
+    implementation 'com.konghq:unirest-java:3.11.09'
+    implementation 'org.jsoup:jsoup:1.15.3'
+
     implementation 'io.ebean:ebean:12.15.1'
     implementation 'io.ebean:ebean-ddl-generator:12.15.1'
     implementation 'io.ebean:ebean-querybean:12.15.1'
@@ -49,6 +52,7 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'io.ebean:ebean-test:12.15.1'
     testImplementation 'com.konghq:unirest-java:3.13.6'
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.10.0")
 
 }
 

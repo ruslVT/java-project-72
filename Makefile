@@ -12,8 +12,8 @@ install:
 run-dist:
 	make -C run-dist
 
-run:
-	make -C app run
+start:
+	make -C app start
 	
 generate-migrations:
 	make -C app generate-migrations
