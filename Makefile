@@ -9,8 +9,8 @@ build:
 install:
 	make -C app install
 
-run-dist:
-	make -C run-dist
+start-dist:
+	make -C start-dist
 
 start:
 	make -C app start
