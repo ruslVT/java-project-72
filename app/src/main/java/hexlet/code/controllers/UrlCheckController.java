@@ -5,6 +5,7 @@ import hexlet.code.domain.UrlCheck;
 import hexlet.code.domain.query.QUrl;
 import io.javalin.http.Handler;
 
+import io.javalin.http.NotFoundResponse;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
@@ -17,6 +18,10 @@ public class UrlCheckController {
     public static Handler urlChecks = ctx -> {
 
         String urlId = ctx.formParam("id");
+
+        if (urlId == null) {
+            throw new NotFoundResponse();
+        }
 
         Url url = new QUrl()
                 .id.equalTo(Integer.parseInt(urlId))
