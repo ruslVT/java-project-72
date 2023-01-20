@@ -22,8 +22,7 @@
         </tbody>
       </table>
       <h2 class="mt-5">Проверки</h2>
-      <form method="post" th:action="@{/urls/{id}/checks(id=${url.getId()})}" th:object="${url}">
-        <input type="hidden" name="id" th:value="*{getId()}">
+      <form method="post" th:action="@{/urls/{id}/checks(id=${url.getId()})}">
         <button type="submit" class="btn btn-primary">Запустить проверку</button>
       </form>
       <table class="table table-bordered table-hover mt-3">
