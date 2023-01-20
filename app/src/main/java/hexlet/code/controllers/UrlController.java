@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class UrlController {
+public final class UrlController {
 
     public static Handler listUrls = ctx -> {
 
