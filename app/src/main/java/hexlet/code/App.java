@@ -36,7 +36,7 @@ public class App {
                 path("{id}", () -> {
                     get(UrlController.showUrl);
                     path("/checks", () -> {
-                        post(UrlController.urlChecks);
+                        post(UrlController.checkUrl);
                     });
                 });
             });
