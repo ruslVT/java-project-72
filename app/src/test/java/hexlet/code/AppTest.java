@@ -22,7 +22,7 @@ import java.io.IOException;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
-public class AppTest {
+public final class AppTest {
 
     @Test
     void testInit() {
