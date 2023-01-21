@@ -54,23 +54,28 @@ public final class UrlController {
     };
 
     public static Handler addUrl = ctx -> {
-        String name = ctx.formParam("url");
-        Url url = new Url(name.replace(" ", ""));
+        String inputName = ctx.formParam("url");
+        String normUrl = "";
 
-        // checking the address for validity
+        // checking the url for validity
         try {
-            new URL(name);
+
+            if (inputName == null) {  // if input form no property required=""
+                throw new MalformedURLException();
+            }
+
+            URL requiredUrl = new URL(inputName);
+            normUrl = requiredUrl.toString().replace(requiredUrl.getPath(), ""); // get url without path
         } catch (MalformedURLException e) {
             ctx.sessionAttribute("flash", "Некорректный URL");
             ctx.sessionAttribute("flashType", "danger");
-            ctx.attribute("url", url);
-            ctx.render("index.html");
+            ctx.redirect("/");
             return;
         }
 
         // search duplicate url
         Url duplicateUrl = new QUrl()
-                .name.equalTo(url.getName())
+                .name.equalTo(normUrl)
                         .findOne();
 
         if (duplicateUrl != null) {
@@ -80,6 +85,7 @@ public final class UrlController {
             return;
         }
 
+        Url url = new Url(normUrl);
         url.save();
 
         ctx.sessionAttribute("flash", "Страница успешно добавлена");
